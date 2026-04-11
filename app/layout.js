@@ -2,6 +2,7 @@ import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({ children }) {
         <a href="#main" className="skip-link">
           Skip to content
         </a>
+        <ScrollToTop />
         <Nav />
         {children}
         <Footer />
