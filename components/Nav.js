@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -14,8 +14,7 @@ const ACTIVE_MAP = {
 export default function Nav() {
   const pathname = usePathname();
   const navRef = useRef(null);
-  const btnRef = useRef(null);
-  const overlayRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const activeLink = ACTIVE_MAP[pathname] || null;
 
@@ -32,22 +31,17 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   const closeMobileMenu = useCallback(() => {
-    const btn = btnRef.current;
-    const overlay = overlayRef.current;
-    if (!btn || !overlay) return;
-    btn.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
+    setMenuOpen(false);
   }, []);
 
   const toggleMobileMenu = useCallback(() => {
-    const btn = btnRef.current;
-    const overlay = overlayRef.current;
-    if (!btn || !overlay) return;
-    btn.classList.toggle('open');
-    overlay.classList.toggle('open');
-    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    setMenuOpen(prev => !prev);
   }, []);
 
   return (
@@ -79,9 +73,9 @@ export default function Nav() {
             </li>
           </ul>
           <button
-            className="mobile-menu-btn"
+            className={`mobile-menu-btn${menuOpen ? ' open' : ''}`}
             aria-label="Menu"
-            ref={btnRef}
+            aria-expanded={menuOpen}
             onClick={toggleMobileMenu}
           >
             <span></span><span></span><span></span>
@@ -89,7 +83,7 @@ export default function Nav() {
         </div>
       </nav>
 
-      <div className="mobile-nav-overlay" ref={overlayRef}>
+      <div className={`mobile-nav-overlay${menuOpen ? ' open' : ''}`}>
         <Link href="/" onClick={closeMobileMenu}>Home</Link>
         <Link href="/for-facilities" onClick={closeMobileMenu}>For Facilities</Link>
         <Link href="/for-cnas" onClick={closeMobileMenu}>Our Network</Link>

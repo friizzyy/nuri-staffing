@@ -19,6 +19,7 @@ export default function HomeContent() {
   // DATA FLOW CANVAS
   // ============================================================
   const initDataFlowCanvas = useCallback(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');

@@ -30,7 +30,8 @@ export default function ContactContent({ initialRole = 'facility' }) {
     lastName: '',
     email: '',
     phone: '',
-    experience: '',
+    experienceAmount: '',
+    experienceUnit: 'Years',
     licenseState: '',
     city: '',
     shiftPreference: '',
@@ -54,7 +55,12 @@ export default function ContactContent({ initialRole = 'facility' }) {
     setError(false)
 
     const endpoint = role === 'cna' ? '/api/cna-apply' : '/api/facility-inquiry'
-    const body = role === 'cna' ? cnaData : facilityData
+    let body = role === 'cna' ? { ...cnaData } : facilityData
+    if (role === 'cna') {
+      body.experience = body.experienceAmount ? `${body.experienceAmount} ${body.experienceUnit}` : ''
+      delete body.experienceAmount
+      delete body.experienceUnit
+    }
 
     try {
       const res = await fetch(endpoint, {
@@ -132,19 +138,19 @@ export default function ContactContent({ initialRole = 'facility' }) {
                   <div className="form-grid">
                     <div className="form-field">
                       <label className="form-label" htmlFor="facilityName">Facility Name</label>
-                      <input type="text" className="form-input" id="facilityName" name="facilityName" placeholder="e.g. Sunrise Senior Living" required value={facilityData.facilityName} onChange={handleFacilityChange} />
+                      <input type="text" className="form-input" id="facilityName" name="facilityName" autoComplete="organization" placeholder="e.g. Sunrise Senior Living" required value={facilityData.facilityName} onChange={handleFacilityChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="contactName">Your Name</label>
-                      <input type="text" className="form-input" id="contactName" name="contactName" placeholder="Your full name" required value={facilityData.contactName} onChange={handleFacilityChange} />
+                      <input type="text" className="form-input" id="contactName" name="contactName" autoComplete="name" placeholder="Your full name" required value={facilityData.contactName} onChange={handleFacilityChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="facilityEmail">Email</label>
-                      <input type="email" className="form-input" id="facilityEmail" name="email" placeholder="you@facility.com" required value={facilityData.email} onChange={handleFacilityChange} />
+                      <input type="email" className="form-input" id="facilityEmail" name="email" autoComplete="email" placeholder="you@facility.com" required value={facilityData.email} onChange={handleFacilityChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="facilityPhone">Phone</label>
-                      <input type="tel" className="form-input" id="facilityPhone" name="phone" placeholder="(408) 555-0100" required value={facilityData.phone} onChange={handleFacilityChange} />
+                      <input type="tel" className="form-input" id="facilityPhone" name="phone" autoComplete="tel" placeholder="(408) 555-0100" required value={facilityData.phone} onChange={handleFacilityChange} />
                     </div>
                     <FormSelect label="Facility Type" id="facilityType" name="facilityType" required value={facilityData.facilityType} onChange={handleFacilityChange} placeholder="Select type..." options={[
                       { value: 'snf', label: 'Skilled Nursing Facility' },
@@ -191,31 +197,37 @@ export default function ContactContent({ initialRole = 'facility' }) {
                   <div className="form-grid">
                     <div className="form-field">
                       <label className="form-label" htmlFor="firstName">First Name</label>
-                      <input type="text" className="form-input" id="firstName" name="firstName" placeholder="Your first name" required value={cnaData.firstName} onChange={handleCnaChange} />
+                      <input type="text" className="form-input" id="firstName" name="firstName" autoComplete="given-name" placeholder="Your first name" required value={cnaData.firstName} onChange={handleCnaChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="lastName">Last Name</label>
-                      <input type="text" className="form-input" id="lastName" name="lastName" placeholder="Your last name" required value={cnaData.lastName} onChange={handleCnaChange} />
+                      <input type="text" className="form-input" id="lastName" name="lastName" autoComplete="family-name" placeholder="Your last name" required value={cnaData.lastName} onChange={handleCnaChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="cnaEmail">Email</label>
-                      <input type="email" className="form-input" id="cnaEmail" name="email" placeholder="you@email.com" required value={cnaData.email} onChange={handleCnaChange} />
+                      <input type="email" className="form-input" id="cnaEmail" name="email" autoComplete="email" placeholder="you@email.com" required value={cnaData.email} onChange={handleCnaChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="cnaPhone">Phone</label>
-                      <input type="tel" className="form-input" id="cnaPhone" name="phone" placeholder="(415) 555-0100" required value={cnaData.phone} onChange={handleCnaChange} />
+                      <input type="tel" className="form-input" id="cnaPhone" name="phone" autoComplete="tel" placeholder="(415) 555-0100" required value={cnaData.phone} onChange={handleCnaChange} />
                     </div>
                     <div className="form-field">
-                      <label className="form-label" htmlFor="experience">Years of CNA Experience</label>
-                      <input type="text" className="form-input" id="experience" name="experience" placeholder="e.g. 3 years" value={cnaData.experience} onChange={handleCnaChange} />
+                      <label className="form-label" htmlFor="experienceAmount">CNA Experience</label>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <input type="number" className="form-input" id="experienceAmount" name="experienceAmount" placeholder="e.g. 3" min="0" style={{ flex: 1 }} value={cnaData.experienceAmount} onChange={handleCnaChange} />
+                        <select className="form-input" name="experienceUnit" value={cnaData.experienceUnit} onChange={handleCnaChange} style={{ flex: 1, cursor: 'pointer' }}>
+                          <option value="Years">Years</option>
+                          <option value="Months">Months</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="licenseState">License State</label>
-                      <input type="text" className="form-input" id="licenseState" name="licenseState" placeholder="e.g. California" value={cnaData.licenseState} onChange={handleCnaChange} />
+                      <input type="text" className="form-input" id="licenseState" name="licenseState" autoComplete="address-level1" placeholder="e.g. California" value={cnaData.licenseState} onChange={handleCnaChange} />
                     </div>
                     <div className="form-field">
                       <label className="form-label" htmlFor="city">City / Area</label>
-                      <input type="text" className="form-input" id="city" name="city" placeholder="e.g. Oakland, Fremont" value={cnaData.city} onChange={handleCnaChange} />
+                      <input type="text" className="form-input" id="city" name="city" autoComplete="address-level2" placeholder="e.g. Oakland, Fremont" value={cnaData.city} onChange={handleCnaChange} />
                     </div>
                     <FormSelect label="Shift Preference" id="shiftPreference" name="shiftPreference" value={cnaData.shiftPreference} onChange={handleCnaChange} placeholder="Select shift..." options={[
                       { value: 'day', label: 'Day (AM)' },

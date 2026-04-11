@@ -388,17 +388,26 @@
     padding: 28px 24px;
   }
 
+  /* Trust meta */
+  .page-facilities .trust-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .page-facilities .trust-badge {
+    font-size: 0.65rem;
+  }
+
   /* Process Timeline — vertical */
   .page-facilities .facilities-timeline {
     flex-direction: column;
     align-items: stretch;
     padding-top: 0;
-    padding-left: 36px;
+    padding-left: 48px;
   }
   .page-facilities .facilities-timeline-line {
     top: 0;
     bottom: 0;
-    left: 12px;
+    left: 20px;
     right: auto;
     width: 2px;
     height: auto;
@@ -414,7 +423,10 @@
   .page-facilities .facilities-timeline-marker {
     flex-shrink: 0;
     margin-bottom: 0;
-    margin-left: -60px;
+    margin-left: -52px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.75rem;
   }
   .page-facilities .facilities-timeline-content {
     max-width: 100%;

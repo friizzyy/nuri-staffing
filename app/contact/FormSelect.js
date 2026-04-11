@@ -6,7 +6,7 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
-  const selectedLabel = options.find(o => o.value === value)?.label || ''
+  const selectedLabel = options.find(o => o.value === value || o.label === value)?.label || ''
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -16,8 +16,8 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  function handleSelect(val) {
-    onChange({ target: { name, value: val } })
+  function handleSelect(opt) {
+    onChange({ target: { name, value: opt.label } })
     setOpen(false)
   }
 
@@ -53,9 +53,9 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
               <li
                 key={opt.value}
                 role="option"
-                aria-selected={opt.value === value}
-                className={`custom-select-option${opt.value === value ? ' selected' : ''}`}
-                onClick={() => handleSelect(opt.value)}
+                aria-selected={opt.label === value || opt.value === value}
+                className={`custom-select-option${(opt.label === value || opt.value === value) ? ' selected' : ''}`}
+                onClick={() => handleSelect(opt)}
               >
                 {opt.label}
               </li>
@@ -63,7 +63,7 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
           </ul>
         )}
         {/* Hidden native input for form validation */}
-        {required && <input type="text" tabIndex={-1} value={value} required style={{ position: 'absolute', opacity: 0, height: 0, width: 0, pointerEvents: 'none' }} onChange={() => {}} />}
+        {required && <input type="text" tabIndex={-1} value={value || ''} required style={{ position: 'absolute', opacity: 0, height: 0, width: 0, pointerEvents: 'none' }} onChange={() => {}} />}
       </div>
     </div>
   )
