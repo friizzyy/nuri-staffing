@@ -47,7 +47,9 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
       onChange({ target: { name, value: next } })
     }
 
-    const displayText = selected.length > 0 ? selected.join(', ') : ''
+    const displayContent = selected.length === 0 ? null
+      : selected.length === 1 ? <span className="custom-select-trigger-text">{selected[0]}</span>
+      : <><span className="custom-select-trigger-text">{selected[0]}</span><span className="custom-select-count">+{selected.length - 1}</span></>
 
     return (
       <div className="form-field">
@@ -62,7 +64,7 @@ export default function FormSelect({ label, id, name, value, onChange, options, 
             aria-haspopup="listbox"
             aria-expanded={open}
           >
-            <span className="custom-select-trigger-text">{displayText || placeholder}</span>
+            {displayContent || <span className="custom-select-trigger-text">{placeholder}</span>}
             <svg className="custom-select-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
               <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
