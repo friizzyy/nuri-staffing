@@ -16,11 +16,11 @@ export default function ContactContent({ initialRole = 'facility' }) {
     contactName: '',
     email: '',
     phone: '',
-    facilityType: '',
+    facilityType: [],
     location: '',
     beds: '',
-    clinicianTypes: '',
-    coverage: '',
+    clinicianTypes: [],
+    coverage: [],
     urgency: '',
     details: '',
   })
@@ -35,8 +35,8 @@ export default function ContactContent({ initialRole = 'facility' }) {
     licenseState: '',
     city: '',
     shiftPreference: [],
-    settingPreference: '',
-    heardAbout: '',
+    settingPreference: [],
+    heardAbout: [],
   })
 
   useScrollReveal()
@@ -55,12 +55,18 @@ export default function ContactContent({ initialRole = 'facility' }) {
     setError(false)
 
     const endpoint = role === 'cna' ? '/api/cna-apply' : '/api/facility-inquiry'
-    let body = role === 'cna' ? { ...cnaData } : facilityData
+    let body = role === 'cna' ? { ...cnaData } : { ...facilityData }
     if (role === 'cna') {
       body.experience = body.experienceAmount ? `${body.experienceAmount} ${body.experienceUnit}` : ''
       delete body.experienceAmount
       delete body.experienceUnit
       body.shiftPreference = Array.isArray(body.shiftPreference) ? body.shiftPreference.join(', ') : body.shiftPreference
+      body.settingPreference = Array.isArray(body.settingPreference) ? body.settingPreference.join(', ') : body.settingPreference
+      body.heardAbout = Array.isArray(body.heardAbout) ? body.heardAbout.join(', ') : body.heardAbout
+    } else {
+      body.facilityType = Array.isArray(body.facilityType) ? body.facilityType.join(', ') : body.facilityType
+      body.clinicianTypes = Array.isArray(body.clinicianTypes) ? body.clinicianTypes.join(', ') : body.clinicianTypes
+      body.coverage = Array.isArray(body.coverage) ? body.coverage.join(', ') : body.coverage
     }
 
     try {
@@ -153,7 +159,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       <label className="form-label" htmlFor="facilityPhone">Phone</label>
                       <input type="tel" className="form-input" id="facilityPhone" name="phone" autoComplete="tel" placeholder="(408) 555-0100" required value={facilityData.phone} onChange={handleFacilityChange} />
                     </div>
-                    <FormSelect label="Facility Type" id="facilityType" name="facilityType" required value={facilityData.facilityType} onChange={handleFacilityChange} placeholder="Select type..." options={[
+                    <FormSelect label="Facility Type" id="facilityType" name="facilityType" required value={facilityData.facilityType} onChange={handleFacilityChange} placeholder="Select types..." multi options={[
                       { value: 'snf', label: 'Skilled Nursing Facility' },
                       { value: 'alf', label: 'Assisted Living' },
                       { value: 'hospital', label: 'Hospital' },
@@ -170,13 +176,12 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       <label className="form-label" htmlFor="beds">Number of Beds</label>
                       <input type="text" className="form-input" id="beds" name="beds" placeholder="e.g. 120" value={facilityData.beds} onChange={handleFacilityChange} />
                     </div>
-                    <FormSelect label="Clinician Types Needed" id="clinicianTypes" name="clinicianTypes" value={facilityData.clinicianTypes} onChange={handleFacilityChange} placeholder="Select type..." options={[
+                    <FormSelect label="Clinician Types Needed" id="clinicianTypes" name="clinicianTypes" value={facilityData.clinicianTypes} onChange={handleFacilityChange} placeholder="Select types..." multi options={[
                       { value: 'cna', label: 'CNA' },
                       { value: 'lpn', label: 'LPN / LVN' },
                       { value: 'rn', label: 'RN' },
-                      { value: 'mixed', label: 'Multiple Types' },
                     ]} />
-                    <FormSelect label="Coverage Needed" id="coverage" name="coverage" value={facilityData.coverage} onChange={handleFacilityChange} placeholder="Select coverage..." options={[
+                    <FormSelect label="Coverage Needed" id="coverage" name="coverage" value={facilityData.coverage} onChange={handleFacilityChange} placeholder="Select coverage..." multi exclusiveValue="Not Sure Yet" options={[
                       { value: 'per-diem', label: 'Per-Diem Shifts' },
                       { value: 'short-term', label: 'Short-Term Contract' },
                       { value: 'float-pool', label: 'Float Pool' },
@@ -238,7 +243,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       { value: 'night', label: 'Night (NOC)' },
                       { value: 'any', label: 'Open to Any' },
                     ]} />
-                    <FormSelect label="Preferred Setting" id="settingPreference" name="settingPreference" value={cnaData.settingPreference} onChange={handleCnaChange} placeholder="Select setting..." options={[
+                    <FormSelect label="Preferred Setting" id="settingPreference" name="settingPreference" value={cnaData.settingPreference} onChange={handleCnaChange} placeholder="Select settings..." multi exclusiveValue="Open to Any" options={[
                       { value: 'snf', label: 'Skilled Nursing Facility' },
                       { value: 'alf', label: 'Assisted Living' },
                       { value: 'hospital', label: 'Hospital' },
@@ -246,7 +251,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       { value: 'memory-care', label: 'Memory Care' },
                       { value: 'any', label: 'Open to Any' },
                     ]} />
-                    <FormSelect label="How Did You Hear About Us?" id="heardAbout" name="heardAbout" value={cnaData.heardAbout} onChange={handleCnaChange} placeholder="Select one..." options={[
+                    <FormSelect label="How Did You Hear About Us?" id="heardAbout" name="heardAbout" value={cnaData.heardAbout} onChange={handleCnaChange} placeholder="Select all that apply..." multi options={[
                       { value: 'referral', label: 'Friend / Referral' },
                       { value: 'google', label: 'Google Search' },
                       { value: 'social', label: 'Social Media' },
