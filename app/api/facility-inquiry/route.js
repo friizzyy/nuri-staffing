@@ -14,7 +14,7 @@ export async function POST(request) {
   try {
     // Send notification to Nuri team
     await resend.emails.send({
-      from: 'Nuri Medical Staffing <notifications@nurimedicalstaffing.com>',
+      from: 'Nuri Medical Staffing <hello@nurimedicalstaffing.com>',
       to: 'hello@nurimedicalstaffing.com',
       subject: `New Facility Inquiry: ${facilityName}`,
       html: facilityNotification({ facilityName, contactName, email, phone, facilityType, location, beds, clinicianTypes, coverage, urgency, details }),
