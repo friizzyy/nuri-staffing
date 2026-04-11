@@ -16,7 +16,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: 'Nuri Medical Staffing <notifications@nurimedicalstaffing.com>',
       to: 'hello@nurimedicalstaffing.com',
-      subject: `New Facility Inquiry — ${facilityName}`,
+      subject: `New Facility Inquiry: ${facilityName}`,
       html: facilityNotification({ facilityName, contactName, email, phone, facilityType, location, beds, clinicianTypes, coverage, urgency, details }),
     });
 
@@ -24,7 +24,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: 'Nuri Medical Staffing <hello@nurimedicalstaffing.com>',
       to: email,
-      subject: 'We received your inquiry — Nuri Medical Staffing',
+      subject: 'Thank you for contacting Nuri Medical Staffing',
       html: facilityConfirmation({ contactName, facilityName }),
     });
 

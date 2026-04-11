@@ -16,7 +16,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: 'Nuri Medical Staffing <notifications@nurimedicalstaffing.com>',
       to: 'hello@nurimedicalstaffing.com',
-      subject: `New CNA Application — ${firstName} ${lastName}`,
+      subject: `New CNA Application: ${firstName} ${lastName}`,
       html: cnaNotification({ firstName, lastName, email, phone, experience, licenseState, city, shiftPreference, settingPreference, heardAbout }),
     });
 
@@ -24,7 +24,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: 'Nuri Medical Staffing <hello@nurimedicalstaffing.com>',
       to: email,
-      subject: 'Application received — Nuri Medical Staffing',
+      subject: 'Thank you for applying to Nuri Medical Staffing',
       html: cnaConfirmation({ firstName }),
     });
 
