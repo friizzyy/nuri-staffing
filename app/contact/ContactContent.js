@@ -34,7 +34,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
     experienceUnit: 'Years',
     licenseState: '',
     city: '',
-    shiftPreference: '',
+    shiftPreference: [],
     settingPreference: '',
     heardAbout: '',
   })
@@ -60,6 +60,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
       body.experience = body.experienceAmount ? `${body.experienceAmount} ${body.experienceUnit}` : ''
       delete body.experienceAmount
       delete body.experienceUnit
+      body.shiftPreference = Array.isArray(body.shiftPreference) ? body.shiftPreference.join(', ') : body.shiftPreference
     }
 
     try {
@@ -215,10 +216,12 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       <label className="form-label" htmlFor="experienceAmount">CNA Experience</label>
                       <div style={{ display: 'flex', gap: '8px' }}>
                         <input type="number" className="form-input" id="experienceAmount" name="experienceAmount" placeholder="e.g. 3" min="0" style={{ flex: 1 }} value={cnaData.experienceAmount} onChange={handleCnaChange} />
-                        <select className="form-input" name="experienceUnit" value={cnaData.experienceUnit} onChange={handleCnaChange} style={{ flex: 1, cursor: 'pointer' }}>
-                          <option value="Years">Years</option>
-                          <option value="Months">Months</option>
-                        </select>
+                        <div style={{ flex: 1 }}>
+                          <FormSelect id="experienceUnit" name="experienceUnit" value={cnaData.experienceUnit} onChange={handleCnaChange} options={[
+                            { value: 'years', label: 'Years' },
+                            { value: 'months', label: 'Months' },
+                          ]} />
+                        </div>
                       </div>
                     </div>
                     <div className="form-field">
@@ -229,7 +232,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
                       <label className="form-label" htmlFor="city">City / Area</label>
                       <input type="text" className="form-input" id="city" name="city" autoComplete="address-level2" placeholder="e.g. Oakland, Fremont" value={cnaData.city} onChange={handleCnaChange} />
                     </div>
-                    <FormSelect label="Shift Preference" id="shiftPreference" name="shiftPreference" value={cnaData.shiftPreference} onChange={handleCnaChange} placeholder="Select shift..." options={[
+                    <FormSelect label="Shift Preference" id="shiftPreference" name="shiftPreference" value={cnaData.shiftPreference} onChange={handleCnaChange} placeholder="Select shifts..." multi exclusiveValue="Open to Any" options={[
                       { value: 'day', label: 'Day (AM)' },
                       { value: 'evening', label: 'Evening (PM)' },
                       { value: 'night', label: 'Night (NOC)' },
