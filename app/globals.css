@@ -969,6 +969,7 @@ footer {
   .custom-select-option { padding: 14px 16px; }
   .custom-select-menu { max-height: 280px; }
   .form-error { flex-wrap: wrap; }
+  .section-title { font-size: clamp(1.6rem, 5vw, 2rem); }
   .section-eyebrow { font-size: 0.72rem; }
   .hero-proof-label { font-size: 0.68rem; }
   .step-time { font-size: 0.68rem; }
