@@ -567,82 +567,95 @@
   .page-home .services-split-left { position: static; }
 }
 @media (max-width: 768px) {
-  /* Hero — compact for mobile */
+  /* ---- HERO ---- */
   .page-home .hero { min-height: auto; }
-  .page-home .hero-left { padding: 40px 24px 32px; }
-  .page-home .hero-right { padding: 32px 20px; min-height: auto; }
-  .page-home .hero-headline { font-size: clamp(2.6rem, 7vw, 3.5rem); margin-bottom: 20px; }
-  .page-home .hero-eyebrow { margin-bottom: 16px; }
-  .page-home .hero-sub { margin-bottom: 32px; }
+  .page-home .hero-left { padding: 32px 24px 24px; }
+  .page-home .hero-right { padding: 24px 20px; min-height: auto; }
+  .page-home .hero-headline {
+    font-size: clamp(2.2rem, 7vw, 2.8rem);
+    margin-bottom: 16px;
+  }
+  .page-home .hero-eyebrow { margin-bottom: 12px; }
+  .page-home .hero-sub { margin-bottom: 24px; font-size: 0.95rem; }
   .page-home .hero-right-sub { display: none; }
-  .page-home .credential-panel { padding: 24px 22px 20px; }
   .page-home #data-flow-canvas { display: none; }
   .page-home .hero-proof {
-    margin-top: 36px;
-    padding-top: 24px;
-    gap: 20px;
+    margin-top: 28px;
+    padding-top: 20px;
+    gap: 16px;
   }
-  .page-home .hero-proof-num {
-    font-size: 1.2rem;
-  }
+  .page-home .hero-proof-num { font-size: 1.1rem; }
 
-  /* Section padding — override the 80px base rules */
-  .page-home .how-works { padding: 48px 24px; }
-  .page-home .services { padding: 48px 24px; }
+  /* Credential panel — compact for mobile */
+  .page-home .credential-panel { padding: 20px 18px 16px; }
+  .page-home .credential-header { font-size: 0.58rem; margin-bottom: 4px; }
+  .page-home .cred-profile { padding: 10px 0 12px; margin-bottom: 12px; min-height: 44px; }
+  .page-home .cred-avatar { width: 32px; height: 32px; font-size: 0.7rem; }
+  .page-home .cred-profile-name { font-size: 0.82rem; }
+  .page-home .cred-profile-meta { font-size: 0.58rem; }
+  .page-home .cred-profile-status { font-size: 0.58rem; padding: 2px 6px; }
+  .page-home .credential-stack { gap: 10px; }
+  .page-home .cred-label { font-size: 0.62rem; gap: 5px; }
+  .page-home .cred-status { font-size: 0.58rem; }
+  .page-home .cred-row { margin-bottom: 4px; }
+  .page-home .progress-track { height: 2px; }
+  .page-home .credential-footer { margin-top: 12px; padding-top: 10px; }
+  .page-home .cred-footer-text { font-size: 0.58rem; }
+  .page-home .cred-footer-badge { font-size: 0.58rem; padding: 3px 8px; }
+
+  /* ---- SECTIONS ---- */
+  .page-home .how-works { padding: 40px 24px; }
+  .page-home .services { padding: 40px 24px; }
 
   /* How-works intro */
-  .page-home .how-works-intro { margin-bottom: 24px; }
-  .page-home .how-works-intro-heading { font-size: 1.5rem; margin-bottom: 8px; }
+  .page-home .how-works-intro { margin-bottom: 20px; }
+  .page-home .how-works-intro-heading { font-size: 1.4rem; margin-bottom: 6px; }
+  .page-home .how-works-intro-sub { font-size: 0.9rem; }
 
-  /* Steps — hide connecting line, disable hover */
+  /* Steps — compact cards, hide decorative icons, disable hover */
+  .page-home .steps-grid { gap: 12px; }
   .page-home .steps-grid::before { display: none; }
+  .page-home .step-card {
+    padding: 20px 20px;
+  }
   .page-home .step-card:hover { transform: none; background: var(--bg); }
+  .page-home .step-icon { display: none; }
+  .page-home .step-card::before { display: none !important; }
+  .page-home .step-title { font-size: 0.95rem; margin-bottom: 6px; }
+  .page-home .step-desc { font-size: 0.84rem; line-height: 1.6; margin-bottom: 10px; }
+  .page-home .step-num { font-size: 0.65rem; margin-bottom: 10px; }
 
   /* Accordion */
-  .page-home .accordion-body-inner {
-    flex-direction: column;
-  }
-  .page-home .accordion-body-icon {
-    width: 32px;
-    height: 32px;
-  }
+  .page-home .accordion-body-inner { flex-direction: column; }
+  .page-home .accordion-body-icon { width: 28px; height: 28px; }
 
   /* CTA cards */
-  .page-home .cta-card {
-    padding: 28px 20px;
-  }
-  .page-home .cta-card:hover {
-    transform: none;
-  }
-  .page-home .cta-dual-header {
-    margin-bottom: 36px;
-  }
-  .page-home .cta-card-icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 18px;
-  }
-  .page-home .cta-card-desc {
-    margin-bottom: 20px;
-  }
-  .page-home .cta-contact-line {
-    margin-top: 28px;
-  }
+  .page-home .cta-card { padding: 24px 20px; }
+  .page-home .cta-card:hover { transform: none; }
+  .page-home .cta-dual-header { margin-bottom: 28px; }
+  .page-home .cta-card-icon { width: 40px; height: 40px; margin-bottom: 14px; }
+  .page-home .cta-card-title { font-size: 1.2rem; margin-bottom: 8px; }
+  .page-home .cta-card-desc { font-size: 0.88rem; margin-bottom: 16px; }
+  .page-home .cta-contact-line { margin-top: 24px; font-size: 0.84rem; }
 }
 @media (max-width: 600px) {
   .page-home .cta-dual-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .page-home .hero-headline { font-size: 2.2rem; }
-  .page-home .hero-sub { font-size: 1rem; }
+  .page-home .hero-left { padding: 28px 20px 20px; }
+  .page-home .hero-right { padding: 20px 16px; }
+  .page-home .hero-headline { font-size: 2rem; }
+  .page-home .hero-sub { font-size: 0.9rem; }
   .page-home .hero-proof {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
   }
   .page-home .hero-proof-divider {
     width: 100%;
     height: 1px;
   }
-  .page-home .how-works-intro-heading { font-size: 1.35rem; }
+  .page-home .credential-panel { padding: 16px 14px 14px; }
+  .page-home .how-works-intro-heading { font-size: 1.25rem; }
+  .page-home .step-card { padding: 16px 16px; }
 }
