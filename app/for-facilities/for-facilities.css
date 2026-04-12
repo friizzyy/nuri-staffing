@@ -376,20 +376,38 @@
   .page-facilities .how-works { padding: 48px 24px; }
   .page-facilities .trust-panel { padding: 48px 24px; }
 
-  /* Credential Ledger — stack vertical */
+  /* Credential Ledger — 2x2 grid */
   .page-facilities .trust-ledger-cards {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
   .page-facilities .trust-ledger-divider {
-    width: 100%;
-    height: 1px;
+    display: none;
   }
   .page-facilities .trust-ledger-card {
-    padding: 28px 24px;
+    flex: 0 0 50%;
+    padding: 24px 16px;
+  }
+  .page-facilities .trust-ledger-card::before {
+    display: none;
+  }
+  .page-facilities .trust-ledger-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .page-facilities .trust-ledger-number {
+    font-size: 1.8rem;
+  }
+  .page-facilities .trust-ledger-icon {
+    margin-bottom: 14px;
+  }
+  .page-facilities .trust-ledger-name {
+    font-size: 0.82rem;
+    margin-bottom: 10px;
   }
 
   /* Trust meta */
   .page-facilities .trust-meta {
+    margin-top: 24px;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -418,7 +436,7 @@
     text-align: left;
     align-items: flex-start;
     gap: 20px;
-    padding: 0 0 40px 0;
+    padding: 0 0 28px 0;
   }
   .page-facilities .facilities-timeline-marker {
     flex-shrink: 0;
@@ -432,6 +450,15 @@
     max-width: 100%;
   }
   .page-facilities .facilities-timeline-icon {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
+    width: 36px;
+    height: 36px;
+  }
+  .page-facilities .facilities-timeline-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .page-facilities .facilities-timeline-desc {
+    margin-bottom: 12px;
   }
 }

@@ -925,7 +925,7 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 24px; }
   .section,
-  .cta-section { padding: 56px 24px; }
+  .cta-section { padding: 48px 24px; }
   footer { padding: 40px 24px 32px; }
   .footer-grid { grid-template-columns: 1fr; gap: 36px; }
   .nav-links { display: none !important; }
@@ -948,7 +948,11 @@ footer {
     min-height: 52px;
   }
   .steps-grid { grid-template-columns: 1fr; }
-  .step-card { padding: 36px 24px; }
+  .step-card { padding: 28px 20px; }
+  .step-card:first-child { border-left: none; border-image: none; }
+  .step-icon { width: 32px; height: 32px; }
+  .step-time { margin-top: 14px; padding: 4px 10px; }
+  .accordion-body-inner { padding: 0 16px 20px; }
   .form-grid { grid-template-columns: 1fr; gap: 20px; }
   .form-input,
   .form-select,
