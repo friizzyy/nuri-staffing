@@ -568,49 +568,99 @@
 }
 @media (max-width: 768px) {
   /* ============================================================
-     HERO — compact mobile layout
+     HERO — premium mobile layout
   ============================================================ */
   .page-home .hero { min-height: auto; }
-  .page-home .hero-left { padding: 32px 24px 24px; }
+  .page-home .hero-left {
+    padding: 36px 24px 28px;
+    background:
+      radial-gradient(ellipse at 85% 15%, rgba(212,114,122,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 10% 85%, rgba(74,64,99,0.04) 0%, transparent 50%),
+      var(--white);
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, transparent, var(--amber), rgba(74,64,99,0.15), transparent) 1;
+  }
   .page-home .hero-right { padding: 24px 20px; min-height: auto; }
+
+  /* Eyebrow — sleek pill badge */
+  .page-home .hero-eyebrow {
+    margin-bottom: 16px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    background: linear-gradient(135deg, var(--amber-light) 0%, rgba(212,114,122,0.12) 100%);
+    padding: 6px 14px;
+    border-radius: 100px;
+    display: inline-flex;
+    border: 1px solid rgba(212,114,122,0.12);
+  }
+  .page-home .hero-eyebrow::before { display: none; }
+
+  /* Headline — gradient text gets a glow */
   .page-home .hero-headline {
     font-size: clamp(2.2rem, 7vw, 2.8rem);
     margin-bottom: 16px;
   }
-  .page-home .hero-eyebrow { margin-bottom: 12px; }
+  .page-home .hero-headline em {
+    filter: drop-shadow(0 2px 12px rgba(212,114,122,0.25));
+  }
+
   .page-home .hero-sub { margin-bottom: 24px; font-size: 0.95rem; }
+
+  /* CTA buttons — inline, amber primary for punch */
   .page-home .hero-ctas {
     gap: 10px;
     flex-wrap: nowrap;
   }
-  .page-home .hero-ctas .btn-primary,
+  .page-home .hero-ctas .btn-primary {
+    padding: 12px 18px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    background: var(--amber);
+    color: var(--white);
+  }
+  .page-home .hero-ctas .btn-primary:hover { background: #c2636b; }
   .page-home .hero-ctas .btn-secondary {
     padding: 12px 18px;
     font-size: 0.82rem;
     white-space: nowrap;
   }
+
   .page-home .hero-right-sub { display: none; }
   .page-home #data-flow-canvas { display: none; }
 
-  /* Proof stats — compact inline row, never stack */
+  /* Proof stats — frosted card with inline layout */
   .page-home .hero-proof {
     flex-direction: row;
     margin-top: 24px;
-    padding-top: 20px;
+    padding: 16px 20px;
     gap: 0;
     justify-content: space-between;
     align-items: flex-start;
+    border-top: none;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
   }
   .page-home .hero-proof-divider { display: none; }
   .page-home .hero-proof-item {
     flex: 1;
     text-align: center;
-    gap: 1px;
+    gap: 2px;
+    position: relative;
   }
-  .page-home .hero-proof-item:first-child { text-align: left; }
-  .page-home .hero-proof-item:last-child { text-align: right; }
+  .page-home .hero-proof-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 1px;
+    background: var(--border);
+  }
+  .page-home .hero-proof-item:first-child { text-align: center; }
+  .page-home .hero-proof-item:last-child { text-align: center; }
   .page-home .hero-proof-num { font-size: 1.15rem; }
-  .page-home .hero-proof-label { font-size: 0.6rem; letter-spacing: 0.06em; }
+  .page-home .hero-proof-label { font-size: 0.58rem; letter-spacing: 0.06em; }
 
   /* Credential panel — compact for mobile */
   .page-home .credential-panel { padding: 20px 18px 16px; }
@@ -716,7 +766,7 @@
   .page-home .cta-contact-line { margin-top: 20px; font-size: 0.84rem; }
 }
 @media (max-width: 480px) {
-  .page-home .hero-left { padding: 28px 20px 20px; }
+  .page-home .hero-left { padding: 28px 20px 24px; }
   .page-home .hero-right { padding: 20px 16px; }
   .page-home .hero-headline { font-size: 2rem; }
   .page-home .hero-sub { font-size: 0.9rem; }
@@ -725,6 +775,8 @@
     padding: 11px 14px;
     font-size: 0.78rem;
   }
+  .page-home .hero-proof { padding: 14px 16px; }
+  .page-home .hero-proof-num { font-size: 1.05rem; }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
   .page-home .how-works { padding: 36px 0; }
