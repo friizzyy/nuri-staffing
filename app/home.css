@@ -597,21 +597,30 @@
 
   .page-home .hero-right { padding: 24px 20px; min-height: auto; }
 
-  /* Eyebrow — pill on dark */
+  /* Eyebrow — centered line-through on dark */
   .page-home .hero-eyebrow {
     margin-bottom: 20px;
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.06);
-    padding: 6px 16px;
-    border-radius: 100px;
-    display: inline-flex;
-    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
     position: relative;
     z-index: 1;
   }
-  .page-home .hero-eyebrow::before { display: none; }
+  .page-home .hero-eyebrow::before,
+  .page-home .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 32px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.25));
+  }
+  .page-home .hero-eyebrow::after {
+    background: linear-gradient(to left, transparent, rgba(255,255,255,0.25));
+  }
 
   /* Headline — white on dark, gradient em glows */
   .page-home .hero-headline {
@@ -733,13 +742,17 @@
   .page-home .how-works { padding: 40px 0; }
   .page-home .services { padding: 40px 24px; }
 
-  /* How-works intro — padded within the full-bleed section */
+  /* How-works intro — centered on mobile */
   .page-home .how-works-intro {
     margin-bottom: 20px;
     padding: 0 24px;
+    text-align: center;
   }
   .page-home .how-works-intro-heading { font-size: 1.4rem; margin-bottom: 6px; }
   .page-home .how-works-intro-sub { font-size: 0.9rem; }
+
+  /* Section eyebrows — centered */
+  .page-home .section-eyebrow { justify-content: center; }
 
   /* ============================================================
      STEPS — horizontal scroll-snap carousel
@@ -789,7 +802,7 @@
   /* ============================================================
      CTA — horizontal compact cards
   ============================================================ */
-  .page-home .cta-dual-header { margin-bottom: 24px; }
+  .page-home .cta-dual-header { margin-bottom: 24px; text-align: center; }
   .page-home .cta-dual-grid { grid-template-columns: 1fr; gap: 12px; }
   .page-home .cta-card {
     flex-direction: row;

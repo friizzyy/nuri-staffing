@@ -207,15 +207,66 @@
   .page-cnas .referral-banner-content p { max-width: 100%; }
 }
 @media (max-width: 768px) {
-  /* Hero — compact height, scaled headline, tighter eyebrow */
+  /* ============================================================
+     HERO — centered, premium mobile layout (dark bg)
+  ============================================================ */
   .page-cnas .hero { min-height: auto; }
-  .page-cnas .hero-inner { padding: 48px 24px; }
+  .page-cnas .hero-inner {
+    padding: 44px 28px 36px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow — centered line-through (white/translucent) */
+  .page-cnas .hero-eyebrow {
+    margin-bottom: 20px;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .page-cnas .hero-eyebrow::before,
+  .page-cnas .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 32px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.25));
+  }
+  .page-cnas .hero-eyebrow::after {
+    background: linear-gradient(to left, transparent, rgba(255,255,255,0.25));
+  }
+
   .page-cnas .hero-headline {
     font-size: clamp(2.2rem, 7vw, 2.8rem);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    max-width: 440px;
   }
-  .page-cnas .hero-eyebrow { margin-bottom: 16px; }
-  .page-cnas .hero-sub { margin-bottom: 32px; }
+  .page-cnas .hero-headline em {
+    filter: drop-shadow(0 2px 16px rgba(212,114,122,0.3));
+  }
+  .page-cnas .hero-sub {
+    margin-bottom: 28px;
+    max-width: 400px;
+  }
+
+  /* CTAs — inline, centered */
+  .page-cnas .hero-ctas {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .page-cnas .hero-ctas .btn-primary,
+  .page-cnas .hero-ctas .btn-secondary {
+    padding: 13px 22px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
   .page-cnas .apply-form { padding: 32px 24px; }
   .page-cnas .referral-banner-inner {
     padding: 28px 16px;
@@ -261,7 +312,24 @@
     min-height: 52px;
     padding: 18px 32px;
   }
+
+  /* CTA section — dark eyebrow line-above uses white gradient */
+  .page-cnas .cnas-cta .section-eyebrow {
+    justify-content: center;
+  }
+  .page-cnas .cnas-cta .section-eyebrow::before {
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  }
+  .page-cnas .cnas-cta .section-title { text-align: center; }
+  .page-cnas .cnas-cta .section-sub { text-align: center; }
 }
 @media (max-width: 480px) {
-  .page-cnas .hero-headline { font-size: 2.2rem; }
+  .page-cnas .hero-inner { padding: 36px 20px 28px; }
+  .page-cnas .hero-headline { font-size: 2rem; }
+  .page-cnas .hero-sub { font-size: 0.9rem; }
+  .page-cnas .hero-ctas .btn-primary,
+  .page-cnas .hero-ctas .btn-secondary {
+    padding: 11px 14px;
+    font-size: 0.78rem;
+  }
 }

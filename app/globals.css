@@ -972,7 +972,22 @@ footer {
   .custom-select-menu { max-height: 280px; }
   .form-error { flex-wrap: wrap; }
   .section-title { font-size: clamp(1.6rem, 5vw, 2rem); }
-  .section-eyebrow { font-size: 0.72rem; }
+  /* Section base — tighter mobile padding */
+  .section { padding: 48px 24px; }
+
+  /* Section eyebrow — line above, centered */
+  .section-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-eyebrow::before {
+    width: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber), transparent);
+  }
   .hero-proof-label { font-size: 0.68rem; }
   .step-time { font-size: 0.68rem; }
   .accordion-body-tag { font-size: 0.68rem; }
