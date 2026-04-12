@@ -574,7 +574,7 @@
 
   /* Hero-left: dark background, centered, merges with hero-right */
   .page-home .hero-left {
-    padding: 44px 28px 32px;
+    padding: 56px 28px 36px;
     background: var(--navy);
     text-align: center;
     align-items: center;
@@ -675,45 +675,51 @@
   .page-home .hero-right-sub { display: none; }
   .page-home #data-flow-canvas { display: none; }
 
-  /* Proof stats — glass card on dark, inline layout */
+  /* Proof stats — inline row, each item as "number + label" on one line */
   .page-home .hero-proof {
     flex-direction: row;
-    margin-top: 28px;
-    padding: 16px 20px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    padding: 0;
     gap: 0;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     border-top: none;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
+    background: none;
+    border: none;
+    border-radius: 0;
     position: relative;
     z-index: 1;
   }
-  .page-home .hero-proof-divider { display: none; }
-  .page-home .hero-proof-item {
-    flex: 1;
-    text-align: center;
-    gap: 2px;
-    position: relative;
+  .page-home .hero-proof-divider {
+    width: auto;
+    height: auto;
+    background: none;
+    display: block;
   }
-  .page-home .hero-proof-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 2px;
-    bottom: 2px;
-    width: 1px;
-    background: rgba(255,255,255,0.08);
+  .page-home .hero-proof-divider::after {
+    content: '·';
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.2);
+    margin: 0 12px;
+  }
+  .page-home .hero-proof-item {
+    flex: none;
+    flex-direction: row;
+    text-align: center;
+    gap: 6px;
+    align-items: baseline;
   }
   .page-home .hero-proof-num {
-    font-size: 1.15rem;
+    font-size: 1rem;
     color: var(--white);
+    font-weight: 700;
   }
   .page-home .hero-proof-label {
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.45);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
   }
 
   /* Credential panel — compact for mobile */
@@ -730,7 +736,26 @@
   .page-home .cred-row { margin-bottom: 4px; }
   .page-home .progress-track { height: 2px; }
   .page-home .progress-fill {
-    transition: width 1.2s ease-out, background 0.3s;
+    transition: width 1s cubic-bezier(.4,0,.2,1), background 0.4s ease;
+    will-change: width;
+  }
+  .page-home .cred-check-icon {
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .page-home .cred-check-icon.checking {
+    animation: checkSpin 1s linear infinite;
+  }
+  .page-home .cred-check-icon.done {
+    transform: scale(1);
+    animation: checkPop 0.3s cubic-bezier(.4,0,.2,1);
+  }
+  @keyframes checkPop {
+    0% { transform: scale(0.6); }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  .page-home .cred-status {
+    transition: color 0.4s ease;
   }
   .page-home .credential-footer { margin-top: 12px; padding-top: 10px; }
   .page-home .cred-footer-text { font-size: 0.58rem; }
@@ -824,7 +849,7 @@
   .page-home .cta-contact-line { margin-top: 20px; font-size: 0.84rem; }
 }
 @media (max-width: 480px) {
-  .page-home .hero-left { padding: 28px 20px 24px; }
+  .page-home .hero-left { padding: 44px 20px 28px; }
   .page-home .hero-right { padding: 20px 16px; }
   .page-home .hero-headline { font-size: 2rem; }
   .page-home .hero-sub { font-size: 0.9rem; }
@@ -833,8 +858,8 @@
     padding: 11px 14px;
     font-size: 0.78rem;
   }
-  .page-home .hero-proof { padding: 14px 16px; }
-  .page-home .hero-proof-num { font-size: 1.05rem; }
+  .page-home .hero-proof-num { font-size: 0.92rem; }
+  .page-home .hero-proof-divider::after { margin: 0 8px; }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
   .page-home .how-works { padding: 36px 0; }
