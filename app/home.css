@@ -579,6 +579,16 @@
   }
   .page-home .hero-eyebrow { margin-bottom: 12px; }
   .page-home .hero-sub { margin-bottom: 24px; font-size: 0.95rem; }
+  .page-home .hero-ctas {
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .page-home .hero-ctas .btn-primary,
+  .page-home .hero-ctas .btn-secondary {
+    padding: 12px 18px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
   .page-home .hero-right-sub { display: none; }
   .page-home #data-flow-canvas { display: none; }
 
@@ -615,6 +625,9 @@
   .page-home .cred-status { font-size: 0.58rem; }
   .page-home .cred-row { margin-bottom: 4px; }
   .page-home .progress-track { height: 2px; }
+  .page-home .progress-fill {
+    transition: width 1.2s ease-out, background 0.3s;
+  }
   .page-home .credential-footer { margin-top: 12px; padding-top: 10px; }
   .page-home .cred-footer-text { font-size: 0.58rem; }
   .page-home .cred-footer-badge { font-size: 0.58rem; padding: 3px 8px; }
@@ -707,6 +720,11 @@
   .page-home .hero-right { padding: 20px 16px; }
   .page-home .hero-headline { font-size: 2rem; }
   .page-home .hero-sub { font-size: 0.9rem; }
+  .page-home .hero-ctas .btn-primary,
+  .page-home .hero-ctas .btn-secondary {
+    padding: 11px 14px;
+    font-size: 0.78rem;
+  }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
   .page-home .how-works { padding: 36px 0; }

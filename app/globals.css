@@ -225,6 +225,8 @@ nav.scrolled {
   padding: 14px 36px;
   font-size: 0.9rem;
   color: #ffffff;
+  background: var(--navy);
+  border-radius: 10px;
   opacity: 1;
 }
 .mobile-nav-overlay .mobile-phone {
