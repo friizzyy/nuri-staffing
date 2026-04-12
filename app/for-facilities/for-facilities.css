@@ -498,7 +498,8 @@
   }
   .page-facilities .trust-ledger-card {
     flex: 0 0 50%;
-    padding: 24px 16px;
+    padding: 20px 12px;
+    gap: 0;
   }
   .page-facilities .trust-ledger-card::before {
     display: none;
@@ -507,15 +508,28 @@
     transform: none;
     box-shadow: none;
   }
-  .page-facilities .trust-ledger-number {
-    font-size: 1.8rem;
-  }
   .page-facilities .trust-ledger-icon {
-    margin-bottom: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .page-facilities .trust-ledger-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  .page-facilities .trust-ledger-number {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
   }
   .page-facilities .trust-ledger-name {
-    font-size: 0.82rem;
-    margin-bottom: 10px;
+    font-size: 0.72rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+  /* Hide redundant "Verified" badges — all 4 say the same thing */
+  .page-facilities .trust-ledger-badge {
+    display: none;
   }
 
   /* Trust meta — centered, clear hierarchy between label and badges */

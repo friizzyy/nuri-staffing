@@ -269,43 +269,42 @@
   }
   .page-cnas .apply-form { padding: 32px 24px; }
   .page-cnas .referral-banner-inner {
-    padding: 28px 16px;
+    padding: 28px 20px;
     text-align: center;
     gap: 20px;
+    border-left: 1px solid var(--border);
+    border-radius: 12px;
   }
   .page-cnas .referral-banner-content .section-title {
     font-size: 1.4rem;
   }
 
-  /* Benefits — single column compact cards */
+  /* Benefits — compact text-only cards */
   .page-cnas .benefits-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
   .page-cnas .benefits-header {
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .page-cnas .benefit-card {
-    padding: 20px 16px;
-    gap: 14px;
+    padding: 18px 20px;
+    gap: 0;
+    border-radius: 10px;
   }
   .page-cnas .benefit-card:hover {
     transform: none;
   }
   .page-cnas .benefit-card-icon {
-    width: 36px;
-    height: 36px;
-  }
-  .page-cnas .benefit-card-icon svg {
-    width: 18px;
-    height: 18px;
+    display: none;
   }
   .page-cnas .benefit-card-title {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     margin-bottom: 4px;
   }
   .page-cnas .benefit-card-desc {
     font-size: 0.84rem;
+    line-height: 1.6;
   }
   .page-cnas .cnas-cta .btn-primary,
   .page-cnas .cnas-cta .btn-amber {

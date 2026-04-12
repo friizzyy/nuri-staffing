@@ -821,9 +821,7 @@
   .page-home .step-desc { font-size: 0.84rem; line-height: 1.6; margin-bottom: 10px; }
   .page-home .step-time { margin-top: 12px; }
 
-  /* Accordion */
-  .page-home .accordion-body-inner { flex-direction: column; }
-  .page-home .accordion-body-icon { width: 28px; height: 28px; }
+  /* Accordion — inherits global mobile rules (icon hidden, column layout) */
 
   /* ============================================================
      CTA — horizontal compact cards
@@ -846,7 +844,7 @@
   }
   .page-home .cta-card-title { font-size: 1rem; margin-bottom: 4px; }
   .page-home .cta-card-desc { display: none; }
-  .page-home .cta-card-btn { font-size: 0.65rem; }
+  .page-home .cta-card-btn { font-size: 0.72rem; }
   .page-home .cta-contact-line { margin-top: 20px; font-size: 0.84rem; }
 }
 @media (max-width: 480px) {

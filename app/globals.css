@@ -929,7 +929,7 @@ footer {
   .section,
   .cta-section { padding: 48px 24px; }
   footer { padding: 40px 24px 32px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .nav-links { display: none !important; }
   .mobile-menu-btn {
     display: flex;
@@ -954,7 +954,8 @@ footer {
   .step-card:first-child { border-left: none; border-image: none; }
   .step-icon { width: 32px; height: 32px; }
   .step-time { margin-top: 14px; padding: 4px 10px; }
-  .accordion-body-inner { padding: 0 16px 20px; }
+  .accordion-body-inner { padding: 0 16px 20px; flex-direction: column; }
+  .accordion-body-icon { display: none; }
   .form-grid { grid-template-columns: 1fr; gap: 20px; }
   .form-input,
   .form-select,
@@ -972,6 +973,7 @@ footer {
   .custom-select-menu { max-height: 280px; }
   .form-error { flex-wrap: wrap; }
   .section-title { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
   /* Section base — tighter mobile padding */
   .section { padding: 48px 24px; }
 
@@ -991,12 +993,20 @@ footer {
   .hero-proof-label { font-size: 0.68rem; }
   .step-time { font-size: 0.68rem; }
   .accordion-body-tag { font-size: 0.68rem; }
+
+  /* Footer — tighter, visual separator between sections */
+  .footer-desc { max-width: 100%; }
   .footer-copyright { font-size: 0.65rem; }
   .footer-built { font-size: 0.65rem; }
-  .footer-heading { font-size: 0.72rem; }
+  .footer-heading {
+    font-size: 0.72rem;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    padding-top: 24px;
   }
 }
 @media (max-width: 600px) {
