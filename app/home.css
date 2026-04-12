@@ -567,7 +567,9 @@
   .page-home .services-split-left { position: static; }
 }
 @media (max-width: 768px) {
-  /* ---- HERO ---- */
+  /* ============================================================
+     HERO — compact mobile layout
+  ============================================================ */
   .page-home .hero { min-height: auto; }
   .page-home .hero-left { padding: 32px 24px 24px; }
   .page-home .hero-right { padding: 24px 20px; min-height: auto; }
@@ -579,12 +581,26 @@
   .page-home .hero-sub { margin-bottom: 24px; font-size: 0.95rem; }
   .page-home .hero-right-sub { display: none; }
   .page-home #data-flow-canvas { display: none; }
+
+  /* Proof stats — compact inline row, never stack */
   .page-home .hero-proof {
-    margin-top: 28px;
+    flex-direction: row;
+    margin-top: 24px;
     padding-top: 20px;
-    gap: 16px;
+    gap: 0;
+    justify-content: space-between;
+    align-items: flex-start;
   }
-  .page-home .hero-proof-num { font-size: 1.1rem; }
+  .page-home .hero-proof-divider { display: none; }
+  .page-home .hero-proof-item {
+    flex: 1;
+    text-align: center;
+    gap: 1px;
+  }
+  .page-home .hero-proof-item:first-child { text-align: left; }
+  .page-home .hero-proof-item:last-child { text-align: right; }
+  .page-home .hero-proof-num { font-size: 1.15rem; }
+  .page-home .hero-proof-label { font-size: 0.6rem; letter-spacing: 0.06em; }
 
   /* Credential panel — compact for mobile */
   .page-home .credential-panel { padding: 20px 18px 16px; }
@@ -603,59 +619,105 @@
   .page-home .cred-footer-text { font-size: 0.58rem; }
   .page-home .cred-footer-badge { font-size: 0.58rem; padding: 3px 8px; }
 
-  /* ---- SECTIONS ---- */
-  .page-home .how-works { padding: 40px 24px; }
+  /* ============================================================
+     SECTIONS — tighter padding
+  ============================================================ */
+  .page-home .how-works { padding: 40px 0; }
   .page-home .services { padding: 40px 24px; }
 
-  /* How-works intro */
-  .page-home .how-works-intro { margin-bottom: 20px; }
+  /* How-works intro — padded within the full-bleed section */
+  .page-home .how-works-intro {
+    margin-bottom: 20px;
+    padding: 0 24px;
+  }
   .page-home .how-works-intro-heading { font-size: 1.4rem; margin-bottom: 6px; }
   .page-home .how-works-intro-sub { font-size: 0.9rem; }
 
-  /* Steps — compact cards, hide decorative icons, disable hover */
-  .page-home .steps-grid { gap: 12px; }
+  /* ============================================================
+     STEPS — horizontal scroll-snap carousel
+  ============================================================ */
+  .page-home .steps-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    background: transparent;
+    padding: 0 24px;
+    scroll-padding-left: 24px;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .page-home .steps-grid::-webkit-scrollbar { display: none; }
   .page-home .steps-grid::before { display: none; }
   .page-home .step-card {
-    padding: 20px 20px;
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+    padding: 24px 20px;
+    border-radius: 14px;
+    margin-right: 12px;
+    border: 1px solid var(--border);
+    background: var(--white);
   }
-  .page-home .step-card:hover { transform: none; background: var(--bg); }
-  .page-home .step-icon { display: none; }
+  .page-home .step-card:last-child { margin-right: 24px; }
+  .page-home .step-card:first-child {
+    border-left: 1px solid var(--border);
+    border-image: none;
+  }
+  .page-home .step-card:hover { transform: none; box-shadow: none; }
   .page-home .step-card::before { display: none !important; }
-  .page-home .step-title { font-size: 0.95rem; margin-bottom: 6px; }
+  .page-home .step-icon { display: none; }
+  .page-home .step-num { font-size: 0.62rem; margin-bottom: 10px; }
+  .page-home .step-title { font-size: 1rem; margin-bottom: 6px; }
   .page-home .step-desc { font-size: 0.84rem; line-height: 1.6; margin-bottom: 10px; }
-  .page-home .step-num { font-size: 0.65rem; margin-bottom: 10px; }
+  .page-home .step-time { margin-top: 12px; }
 
   /* Accordion */
   .page-home .accordion-body-inner { flex-direction: column; }
   .page-home .accordion-body-icon { width: 28px; height: 28px; }
 
-  /* CTA cards */
-  .page-home .cta-card { padding: 24px 20px; }
+  /* ============================================================
+     CTA — horizontal compact cards
+  ============================================================ */
+  .page-home .cta-dual-header { margin-bottom: 24px; }
+  .page-home .cta-dual-grid { grid-template-columns: 1fr; gap: 12px; }
+  .page-home .cta-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 14px;
+  }
   .page-home .cta-card:hover { transform: none; }
-  .page-home .cta-dual-header { margin-bottom: 28px; }
-  .page-home .cta-card-icon { width: 40px; height: 40px; margin-bottom: 14px; }
-  .page-home .cta-card-title { font-size: 1.2rem; margin-bottom: 8px; }
-  .page-home .cta-card-desc { font-size: 0.88rem; margin-bottom: 16px; }
-  .page-home .cta-contact-line { margin-top: 24px; font-size: 0.84rem; }
-}
-@media (max-width: 600px) {
-  .page-home .cta-dual-grid { grid-template-columns: 1fr; }
+  .page-home .cta-card-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .page-home .cta-card-title { font-size: 1rem; margin-bottom: 4px; }
+  .page-home .cta-card-desc { display: none; }
+  .page-home .cta-card-btn { font-size: 0.65rem; }
+  .page-home .cta-contact-line { margin-top: 20px; font-size: 0.84rem; }
 }
 @media (max-width: 480px) {
   .page-home .hero-left { padding: 28px 20px 20px; }
   .page-home .hero-right { padding: 20px 16px; }
   .page-home .hero-headline { font-size: 2rem; }
   .page-home .hero-sub { font-size: 0.9rem; }
-  .page-home .hero-proof {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-  .page-home .hero-proof-divider {
-    width: 100%;
-    height: 1px;
-  }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
-  .page-home .step-card { padding: 16px 16px; }
+  .page-home .how-works { padding: 36px 0; }
+  .page-home .how-works-intro { padding: 0 20px; }
+  .page-home .steps-grid {
+    padding: 0 20px;
+    scroll-padding-left: 20px;
+  }
+  .page-home .step-card {
+    flex: 0 0 85%;
+    padding: 20px 16px;
+  }
+  .page-home .step-card:last-child { margin-right: 20px; }
 }
