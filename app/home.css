@@ -675,51 +675,52 @@
   .page-home .hero-right-sub { display: none; }
   .page-home #data-flow-canvas { display: none; }
 
-  /* Proof stats — inline row, each item as "number + label" on one line */
+  /* Proof stats — glass card, equal columns, clean uniform layout */
   .page-home .hero-proof {
     flex-direction: row;
-    flex-wrap: wrap;
     margin-top: 32px;
     padding: 0;
     gap: 0;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
     border-top: none;
-    background: none;
-    border: none;
-    border-radius: 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    overflow: hidden;
   }
   .page-home .hero-proof-divider {
-    width: auto;
+    width: 1px;
     height: auto;
-    background: none;
+    background: rgba(255,255,255,0.08);
     display: block;
-  }
-  .page-home .hero-proof-divider::after {
-    content: '·';
-    font-size: 1.2rem;
-    color: rgba(255,255,255,0.2);
-    margin: 0 12px;
+    flex-shrink: 0;
+    align-self: stretch;
   }
   .page-home .hero-proof-item {
-    flex: none;
-    flex-direction: row;
+    flex: 1;
     text-align: center;
-    gap: 6px;
-    align-items: baseline;
+    gap: 4px;
+    padding: 16px 8px;
+    justify-content: center;
   }
   .page-home .hero-proof-num {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--white);
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
   }
   .page-home .hero-proof-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.04em;
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
     color: rgba(255,255,255,0.4);
     text-transform: uppercase;
+    line-height: 1.3;
   }
 
   /* Credential panel — compact for mobile */
@@ -858,8 +859,9 @@
     padding: 11px 14px;
     font-size: 0.78rem;
   }
-  .page-home .hero-proof-num { font-size: 0.92rem; }
-  .page-home .hero-proof-divider::after { margin: 0 8px; }
+  .page-home .hero-proof-num { font-size: 1.05rem; }
+  .page-home .hero-proof-item { padding: 14px 6px; }
+  .page-home .hero-proof-label { font-size: 0.48rem; }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
   .page-home .how-works { padding: 36px 0; }
