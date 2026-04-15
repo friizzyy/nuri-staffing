@@ -34,7 +34,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #D4727A;
+  color: #C2565E;
   line-height: 1.5;
   margin-bottom: 28px;
   display: inline-flex;
@@ -47,7 +47,7 @@
   display: block;
   width: 24px;
   height: 1px;
-  background: #D4727A;
+  background: #C2565E;
 }
 
 .code {
@@ -61,7 +61,7 @@
 }
 
 .codeAccent {
-  color: #D4727A;
+  color: #C2565E;
 }
 
 .title {
@@ -147,5 +147,5 @@
 }
 
 .links a:hover {
-  color: #D4727A;
+  color: #C2565E;
 }

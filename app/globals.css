@@ -14,7 +14,7 @@
 :root {
   --bg: #F7F5F8;
   --navy: #4A4063;
-  --amber: #D4727A;
+  --amber: #C2565E;
   --white: #ffffff;
   --text: #4A4063;
   --text-muted: #6E6580;
@@ -39,7 +39,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 1;
   pointer-events: none;
   opacity: 0.022;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -356,7 +356,7 @@ nav.scrolled {
 }
 .hero-headline em {
   font-style: normal;
-  background: linear-gradient(135deg, #D4727A 0%, #E8967A 100%);
+  background: linear-gradient(135deg, #C2565E 0%, #E8967A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -990,7 +990,7 @@ footer {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--amber), transparent);
   }
-  .hero-proof-label { font-size: 0.68rem; }
+  .hero-proof-label { font-size: 0.62rem; }
   .step-time { font-size: 0.68rem; }
   .accordion-body-tag { font-size: 0.68rem; }
 

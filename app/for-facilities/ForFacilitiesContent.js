@@ -50,7 +50,7 @@ export default function ForFacilitiesContent() {
       <section className="hero" id="main" tabIndex={-1}>
         <div className="hero-bg-photo">
           <img
-            src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1400&q=80"
+            src="/hero-facility.jpg"
             alt="Modern healthcare facility hallway"
             loading="eager"
             fetchPriority="high"

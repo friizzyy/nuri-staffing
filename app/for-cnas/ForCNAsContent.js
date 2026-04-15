@@ -14,7 +14,7 @@ export default function ForCNAsContent() {
         <div className="hero-bg-photo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1400&q=80"
+            src="/hero-cna-team.jpg"
             alt="CNA walking into healthcare facility for shift"
             loading="eager"
             fetchPriority="high"

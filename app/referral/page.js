@@ -1,4 +1,5 @@
 import ReferralContent from './ReferralContent'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 export const metadata = {
   title: 'Referral Pipeline',
@@ -11,5 +12,5 @@ export const metadata = {
 }
 
 export default function Page() {
-  return <ReferralContent />
+  return <ErrorBoundary><ReferralContent /></ErrorBoundary>
 }

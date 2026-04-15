@@ -1,4 +1,5 @@
 import HomeContent from '@/components/HomeContent'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 export const metadata = {
   title: 'Nuri Staffing \u2014 Northern California CNA Staffing You Can Trust',
@@ -32,5 +33,5 @@ export const metadata = {
 }
 
 export default function Page() {
-  return <HomeContent />
+  return <ErrorBoundary><HomeContent /></ErrorBoundary>
 }

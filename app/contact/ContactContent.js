@@ -196,7 +196,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
                     ]} />
                     <div className="form-field full">
                       <label className="form-label" htmlFor="details">Additional Details</label>
-                      <textarea className="form-textarea" id="details" name="details" placeholder="Tell us about your staffing needs, shift schedules, or any specific requirements..." value={facilityData.details} onChange={handleFacilityChange}></textarea>
+                      <textarea className="form-textarea" id="details" name="details" placeholder="Tell us about your staffing needs, shift schedules, or any specific requirements..." maxLength={2000} value={facilityData.details} onChange={handleFacilityChange}></textarea>
                     </div>
                   </div>
                 ) : (
@@ -297,7 +297,7 @@ export default function ContactContent({ initialRole = 'facility' }) {
 
           {/* Alt contact line */}
           <div className="contact-alt reveal reveal-delay-1">
-            Prefer to talk? Call us at <a href="tel:+14086214061">(408) 621-4061</a> or email <a href="mailto:hello@nuristaffing.com">hello@nuristaffing.com</a>
+            Prefer to talk? Call us at <a href="tel:+14086214061">(408) 621-4061</a> or email <a href="mailto:hello@nurimedicalstaffing.com">hello@nurimedicalstaffing.com</a>
           </div>
         </div>
       </section>

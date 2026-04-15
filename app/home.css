@@ -823,6 +823,22 @@
   .page-home .step-card:hover { transform: none; box-shadow: none; }
   .page-home .step-card::before { display: none !important; }
   .page-home .step-icon { display: none; }
+
+  /* Scroll hint: fade on right edge */
+  .page-home .steps-grid-wrap {
+    position: relative;
+  }
+  .page-home .steps-grid-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, transparent, var(--bg));
+    pointer-events: none;
+    z-index: 1;
+  }
   .page-home .step-num { font-size: 0.62rem; margin-bottom: 10px; }
   .page-home .step-title { font-size: 1rem; margin-bottom: 6px; }
   .page-home .step-desc { font-size: 0.84rem; line-height: 1.6; margin-bottom: 10px; }
@@ -866,7 +882,7 @@
   }
   .page-home .hero-proof-num { font-size: 1.05rem; }
   .page-home .hero-proof-item { padding: 14px 6px; }
-  .page-home .hero-proof-label { font-size: 0.48rem; }
+  .page-home .hero-proof-label { font-size: 0.56rem; }
   .page-home .credential-panel { padding: 16px 14px 14px; }
   .page-home .how-works-intro-heading { font-size: 1.25rem; }
   .page-home .how-works { padding: 36px 0; }

@@ -419,7 +419,7 @@ export default function HomeContent() {
         <div className="hero-right" id="credPanel">
           <div className="hero-right-bg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="CNA caregiver walking through Northern California care facility corridor" loading="eager" fetchPriority="high" decoding="async" />
+            <img src="/hero-cna-corridor.jpg" alt="CNA caregiver walking through Northern California care facility corridor" loading="eager" fetchPriority="high" decoding="async" />
           </div>
           <div className="credential-panel" id="credentialEngine" ref={credentialEngineRef}>
             <div className="credential-header">
@@ -504,6 +504,7 @@ export default function HomeContent() {
           <h2 className="how-works-intro-heading">Coverage in three steps.<br />No staffing board required.</h2>
           <p className="how-works-intro-sub">You tell us the need. We match, verify, and confirm. One call, one contact, one reliable process.</p>
         </div>
+        <div className="steps-grid-wrap">
         <div className="steps-grid">
           <div className="step-card reveal">
             <div className="step-num">Step 01</div>
@@ -548,6 +549,7 @@ export default function HomeContent() {
             <div className="step-desc">You receive a confirmation with the CNA&#39;s name, credential summary, and contact info. The CNA arrives briefed on your facility&#39;s protocols. Both sides prepared before day one.</div>
             <div className="step-time">Within 48 hours</div>
           </div>
+        </div>
         </div>
       </section>
 
